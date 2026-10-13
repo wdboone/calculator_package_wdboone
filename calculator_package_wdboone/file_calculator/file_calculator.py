@@ -6,15 +6,15 @@ DEFAULT_FILE = Path(__file__).parent / "nums.csv"
 
 
 class FileCalculator(Calculator):
-    def __init__(self, path=DEFAULT_FILE):
-        self.path = path
+    def __init__(self, path: Path = DEFAULT_FILE) -> None:
+        self.path: Path = path
 
-    def add_file(self):
-        total = None
+    def add_file(self) -> int | None:
+        total: int | None = None
         with self.path.open() as f:
             for line in f:
                 if total is None:
-                    total = line
+                    total = int(line)
                 else:
-                    total += line
+                    total += int(line)
         return total

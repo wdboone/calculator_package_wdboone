@@ -1,3 +1,5 @@
+import pytest
+
 from calculator_package_wdboone import Calculator
 
 
@@ -13,3 +15,7 @@ class TestCalculator:
 
     def test_divide(self):
         assert Calculator().divide(8, 2) == 4, "divide failed"
+
+    def test_divide_zero(self):
+        with pytest.raises(ZeroDivisionError):
+            Calculator().divide(8, 0)

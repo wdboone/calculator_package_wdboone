@@ -1,7 +1,7 @@
 from .calculator import Calculator
 
 
-def main():
+def main() -> None:
     c = Calculator()
     print(c.add(1, 2))
 
