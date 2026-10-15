@@ -1,0 +1,6 @@
+include README.md
+include LICENSE
+include tox.ini
+global-include *.typed
+global-include *.csv
+prune scripts
