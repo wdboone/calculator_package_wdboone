@@ -1,5 +1,6 @@
-from tqdm import tqdm
 from pathlib import Path
+
+from tqdm import tqdm
 
 from ..calculator import Calculator
 
