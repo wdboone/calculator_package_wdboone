@@ -1,17 +1,46 @@
 [build-system]
-requires = ["setuptools"]
+requires = ["setuptools>=77.0.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "calculator_package_wdboone"
-version = "0.0.2"
+version = "0.0.3"
 description = "A simple calculator package"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [
+    {name = "Willie D. Boone"},
+]
+keywords = ["calculator_package_wdboone", "Python Packaging", "Calculator"]
+classifiers = [
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS",
+    "Operating System :: MacOS :: MacOS X",
+    "Typing :: Typed",
+]
 dependencies = [
     "tqdm~=4.0",
 ]
 
+[project.urls]
+Homepage = "https://github.com/wdboone/calculator_package_wdboone"
+Documentation = "https://github.com/wdboone/calculator_package_wdboone/"
+
+[project.scripts]
+calc = "calculator_package_wdboone.__main__:main"
+
 [project.optional-dependencies]
 test = [
+    "tox==4.65.5",
     "pytest==9.1.1",
     "mypy==2.4.0",
     "ruff==0.17.0",
@@ -19,5 +48,92 @@ test = [
     "types-tqdm==4.70.0.20260906",
 ]
 
-[project.scripts]
-calc = "calculator_package_wdboone.__main__:main"
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.package-data]
+calculator_package_wdboone = ["py.typed"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["calculator_package_wdboone*"]
+
+[tool.pytest.ini_options]
+addopts = "-rxXs -v"
+
+[tool.mypy]
+strict = true
+ignore_missing_imports = true
+show_error_codes = true
+warn_unreachable = true
+disallow_untyped_calls = false
+disallow_incomplete_defs = false
+disallow_untyped_defs = false
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    # Not applicable to this repo
+    "CPY",
+    "DTZ",
+    "PD",
+    "NPY",
+    "FAST",
+    "AIR",
+    "C90",
+    "D100", "D101", "D102", "D103", "D104", "D105", "D106", "D107",
+    "D200", "D201", "D202", "D203", "D204", "D205", "D206", "D207",
+    "D208", "D210", "D211", "D212", "D213", "D214", "D215",
+    "D300", "D400", "D401", "D402", "D403", "D404", "D405",
+    "D406", "D407", "D408", "D409", "D410", "D411", "D412",
+    "D413", "D414", "D415", "D416", "D417", "D418", "D419",
+    "YTT",
+    "ANN",
+    "FBT",
+    "COM",
+    "EM",
+    "PYI",
+    "Q000", "Q001", "Q002",
+    "RET",
+    "ARG",
+    "TD",
+    "FIX",
+    "ERA",
+    "PGH",
+    "PERF",
+    "DOC",
+    # Individual rules not wanted
+    "PTH123",
+    "TRY003",
+    "TRY300",
+    "TRY301",
+    "S101",
+    "C408",
+    "PLR091",
+    "PLR2004",
+    "N803",
+    "N806",
+    "N802",
+    "UP008",
+    "UP035",
+    "PIE790",
+    "B027",
+    "SIM105",
+    "SIM103",
+    "SIM114",
+    "SIM117",
+    "ISC001",
+    "RUF022",
+    "G001", "G002", "G003", "G004",
+    "PT018",
+    "PLW1641",
+]
+unfixable = []
+
+[tool.ruff.lint.per-file-ignores]
+"**/__init__.py" = ["I"]
+"**/tests/**/*.py" = ["SLF001"]
+"scripts/**/*.py" = ["T201", "INP001"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["calculator_package_wdboone"]

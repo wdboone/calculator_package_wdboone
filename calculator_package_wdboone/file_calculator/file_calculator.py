@@ -2,7 +2,7 @@ from pathlib import Path
 
 from tqdm import tqdm
 
-from ..calculator import Calculator
+from ..calculator import Calculator  # noqa: TID252
 
 DEFAULT_FILE = Path(__file__).parent / "nums.csv"
 
