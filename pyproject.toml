@@ -6,6 +6,18 @@ build-backend = "setuptools.build_meta"
 name = "calculator_package_wdboone"
 version = "0.0.2"
 description = "A simple calculator package"
+dependencies = [
+    "tqdm~=4.0",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest==9.1.1",
+    "mypy==2.4.0",
+    "ruff==0.17.0",
+    "pre-commit==4.6.2",
+    "types-tqdm==4.70.0.20260906",
+]
 
 [project.scripts]
 calc = "calculator_package_wdboone.__main__:main"
